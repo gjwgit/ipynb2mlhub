@@ -20,6 +20,16 @@ def typeset(c, lang):
 def extract(c, lang):
     script = ""
     for src in c['source']:
+        # Ignore lines that start with %
+        ign = src.lstrip()
+        if len(ign) > 0:
+            ign = ign[0]
+        else:
+            ign = ""
+        if ign == '%': continue
+        # Ignore lines containing __future__
+        if "__future__" in src: continue
+        # Otherwise add in
         script += src
     return('mlcat("", """\n' + script + '\n""")\nmlask()\n' + script)
 
