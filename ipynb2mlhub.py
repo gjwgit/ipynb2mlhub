@@ -23,7 +23,7 @@ def extract(c, lang):
         script += src
     return('mlcat("", """\n' + script + '\n""")\nmlask()\n' + script)
 
-f = open("sar_movielens.ipynb")
+f = open("rbm_movielens.ipynb")
 nb = json.load(f)
 
 lang = nb['metadata']['kernelspec']['language']
