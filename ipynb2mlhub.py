@@ -4,7 +4,10 @@
 # Licensed under the MIT License.
 # Author: Graham.Williams@togaware.com
 
+import argparse
 import json
+import sys
+
 from markdown import markdown
 from IPython.display import Markdown, display
 from subprocess import Popen, PIPE, STDOUT
@@ -33,7 +36,7 @@ def extract(c, lang):
         script += src
     return('mlcat("", """\n' + script + '\n""")\nmlask()\n' + script)
 
-f = open("rbm_movielens.ipynb")
+f = open(sys.argv[1]) # Need proper argparse handling.
 nb = json.load(f)
 
 lang = nb['metadata']['kernelspec']['language']
